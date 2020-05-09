@@ -4,6 +4,7 @@
 # In[25]:
 
 
+import sys
 import json,config
 from requests_oauthlib import OAuth1Session
 
@@ -16,8 +17,15 @@ twitter = OAuth1Session(ck, cs, at, ats)
 
 url = 'https://api.twitter.com/1.1/search/tweets.json'
 
-print("Please input keyword")
-tweet = input('>> ')
+args = sys.argv
+
+if len(sys.argv) == 2:
+    tweet=args[1]
+else:
+    print("Please input keyword")
+    tweet = input('>> ')
+
+
 count=20
 result_type='mixed'
 
